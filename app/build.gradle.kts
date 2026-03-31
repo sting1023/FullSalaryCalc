@@ -13,6 +13,25 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("salarycalc") {
+            storeFile = file("salarycalc.keystore")
+            storePassword = "salary123"
+            keyAlias = "salarycalc"
+            keyPassword = "salary123"
+            storeType = "PKCS12"
+        }
+    }
+
+    buildTypes {
+        debug {
+            // debug 不签名
+        }
+        release {
+            signingConfig = signingConfigs["salarycalc"]
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
