@@ -25,10 +25,12 @@ android {
 
     buildTypes {
         debug {
-            // debug 不签名
+            isMinifyEnabled = false
         }
         release {
-            signingConfig = signingConfigs["salarycalc"]
+            isMinifyEnabled = false
+            isDebuggable = false
+            signingConfig = signingConfigs.getByName("salarycalc")
         }
     }
 
